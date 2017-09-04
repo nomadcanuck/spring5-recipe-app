@@ -23,22 +23,22 @@ public class RecipeControllerTest {
     @Mock
     RecipeService recipeService;
 
-    RecipeController controller;
+    RecipeController recipeController;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        controller = new RecipeController(recipeService);
+        recipeController = new RecipeController(recipeService);
     }
 
     @Test
-    public void testGetRecipe() throws Exception {
+    public void getRecipe() throws Exception {
 
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
 
         when(recipeService.findById(anyLong())).thenReturn(recipe);
 
