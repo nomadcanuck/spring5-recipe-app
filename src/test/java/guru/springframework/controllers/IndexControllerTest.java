@@ -31,18 +31,18 @@ public class IndexControllerTest {
     @Mock
     Model model;
 
-    IndexController controller;
+    IndexController indexController;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        controller = new IndexController(recipeService);
+        indexController = new IndexController(recipeService);
     }
 
     @Test
     public void testMockMVC() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -66,7 +66,7 @@ public class IndexControllerTest {
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
         //when
-        String viewName = controller.getIndexPage(model);
+        String viewName = indexController.getIndexPage(model);
 
 
         //then
