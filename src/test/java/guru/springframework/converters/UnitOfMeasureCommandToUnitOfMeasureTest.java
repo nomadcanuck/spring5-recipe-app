@@ -12,33 +12,33 @@ public class UnitOfMeasureCommandToUnitOfMeasureTest {
     public static final String DESCRIPTION = "description";
     public static final Long LONG_VALUE = new Long(1L);
 
-    UnitOfMeasureCommandToUnitOfMeasure converter;
+    UnitOfMeasureCommandToUnitOfMeasure uomConverter;
 
     @Before
     public void setUp() throws Exception {
-        converter = new UnitOfMeasureCommandToUnitOfMeasure();
+        uomConverter = new UnitOfMeasureCommandToUnitOfMeasure();
 
     }
 
     @Test
     public void testNullParamter() throws Exception {
-        assertNull(converter.convert(null));
+        assertNull(uomConverter.convert(null));
     }
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new UnitOfMeasureCommand()));
+        assertNotNull(uomConverter.convert(new UnitOfMeasureCommand()));
     }
 
     @Test
-    public void convert() throws Exception {
+    public void convertUnitOfMeasure() throws Exception {
         //given
         UnitOfMeasureCommand command = new UnitOfMeasureCommand();
         command.setId(LONG_VALUE);
         command.setDescription(DESCRIPTION);
 
         //when
-        UnitOfMeasure uom = converter.convert(command);
+        UnitOfMeasure uom = uomConverter.convert(command);
 
         //then
         assertNotNull(uom);

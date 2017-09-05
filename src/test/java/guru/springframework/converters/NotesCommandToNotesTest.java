@@ -11,33 +11,33 @@ public class NotesCommandToNotesTest {
 
     public static final Long ID_VALUE = new Long(1L);
     public static final String RECIPE_NOTES = "Notes";
-    NotesCommandToNotes converter;
+    NotesCommandToNotes notesConverter;
 
     @Before
     public void setUp() throws Exception {
-        converter = new NotesCommandToNotes();
+        notesConverter = new NotesCommandToNotes();
 
     }
 
     @Test
     public void testNullParameter() throws Exception {
-        assertNull(converter.convert(null));
+        assertNull(notesConverter.convert(null));
     }
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new NotesCommand()));
+        assertNotNull(notesConverter.convert(new NotesCommand()));
     }
 
     @Test
-    public void convert() throws Exception {
+    public void convertNotes() throws Exception {
         //given
         NotesCommand notesCommand = new NotesCommand();
         notesCommand.setId(ID_VALUE);
         notesCommand.setRecipeNotes(RECIPE_NOTES);
 
         //when
-        Notes notes = converter.convert(notesCommand);
+        Notes notes = notesConverter.convert(notesCommand);
 
         //then
         assertNotNull(notes);

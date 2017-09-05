@@ -27,28 +27,28 @@ public class RecipeCommandToRecipeTest {
     public static final Long INGRED_ID_2 = 4L;
     public static final Long NOTES_ID = 9L;
 
-    RecipeCommandToRecipe converter;
+    RecipeCommandToRecipe recipeConverter;
 
 
     @Before
     public void setUp() throws Exception {
-        converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
+        recipeConverter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
                 new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
                 new NotesCommandToNotes());
     }
 
     @Test
     public void testNullObject() throws Exception {
-        assertNull(converter.convert(null));
+        assertNull(recipeConverter.convert(null));
     }
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new RecipeCommand()));
+        assertNotNull(recipeConverter.convert(new RecipeCommand()));
     }
 
     @Test
-    public void convert() throws Exception {
+    public void convertRecipe() throws Exception {
         //given
         RecipeCommand recipeCommand = new RecipeCommand();
         recipeCommand.setId(RECIPE_ID);
@@ -85,7 +85,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.getIngredients().add(ingredient2);
 
         //when
-        Recipe recipe  = converter.convert(recipeCommand);
+        Recipe recipe  = recipeConverter.convert(recipeCommand);
 
         assertNotNull(recipe);
         assertEquals(RECIPE_ID, recipe.getId());
