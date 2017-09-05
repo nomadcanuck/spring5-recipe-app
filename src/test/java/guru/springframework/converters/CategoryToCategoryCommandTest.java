@@ -14,32 +14,32 @@ public class CategoryToCategoryCommandTest {
 
     public static final Long ID_VALUE = new Long(1L);
     public static final String DESCRIPTION = "descript";
-    CategoryToCategoryCommand convter;
+    CategoryToCategoryCommand categoryConverter;
 
     @Before
     public void setUp() throws Exception {
-        convter = new CategoryToCategoryCommand();
+        categoryConverter = new CategoryToCategoryCommand();
     }
 
     @Test
     public void testNullObject() throws Exception {
-        assertNull(convter.convert(null));
+        assertNull(categoryConverter.convert(null));
     }
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(convter.convert(new Category()));
+        assertNotNull(categoryConverter.convert(new Category()));
     }
 
     @Test
-    public void convert() throws Exception {
+    public void convertCategory() throws Exception {
         //given
         Category category = new Category();
         category.setId(ID_VALUE);
         category.setDescription(DESCRIPTION);
 
         //when
-        CategoryCommand categoryCommand = convter.convert(category);
+        CategoryCommand categoryCommand = categoryConverter.convert(category);
 
         //then
         assertEquals(ID_VALUE, categoryCommand.getId());
