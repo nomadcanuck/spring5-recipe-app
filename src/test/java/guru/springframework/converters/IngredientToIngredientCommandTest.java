@@ -23,21 +23,21 @@ public class IngredientToIngredientCommandTest {
     public static final Long ID_VALUE = new Long(1L);
 
 
-    IngredientToIngredientCommand converter;
+    IngredientToIngredientCommand ingredientConverter;
 
     @Before
     public void setUp() throws Exception {
-        converter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        ingredientConverter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
     }
 
     @Test
     public void testNullConvert() throws Exception {
-        assertNull(converter.convert(null));
+        assertNull(ingredientConverter.convert(null));
     }
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new Ingredient()));
+        assertNotNull(ingredientConverter.convert(new Ingredient()));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class IngredientToIngredientCommandTest {
         ingredient.setDescription(DESCRIPTION);
         ingredient.setUom(null);
         //when
-        IngredientCommand ingredientCommand = converter.convert(ingredient);
+        IngredientCommand ingredientCommand = ingredientConverter.convert(ingredient);
         //then
         assertNull(ingredientCommand.getUnitOfMeasure());
         assertEquals(ID_VALUE, ingredientCommand.getId());
@@ -73,7 +73,7 @@ public class IngredientToIngredientCommandTest {
 
         ingredient.setUom(uom);
         //when
-        IngredientCommand ingredientCommand = converter.convert(ingredient);
+        IngredientCommand ingredientCommand = ingredientConverter.convert(ingredient);
         //then
         assertEquals(ID_VALUE, ingredientCommand.getId());
         assertNotNull(ingredientCommand.getUnitOfMeasure());
